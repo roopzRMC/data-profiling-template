@@ -79,8 +79,8 @@ Statistical Analysis of numerical variables in dataset
 
 DAMA - Data managment 
 
-- Completness
-- Consistenccy  
+- Completeness
+- Consistency  
 - Accuracy 
 - Timeliness 
 - Validity 
@@ -89,7 +89,7 @@ DAMA - Data managment
 
 
 ```python
-# Reading Data For Assesment 
+# Reading Data For Assessment 
 ## File Format of the data is unknown, a method of importing a specific piece of data, or files within the folder structure 
 # * Assuming Flatfile Format*
 
@@ -97,12 +97,12 @@ df = pd.read_csv(file, delimiter= '\t', na_values= 'Nan', low_memory= False)
 
 ```
 
-### _Dataset completness_ 
+### _Dataset completeness_ 
 #####  Thresholds can be set to remove a pct of null values within the dataset 
 
 
 ```python
-#Caluculating missing values and resprective %
+#Calculating missing values
 total = df.isnull().sum().sort_values(ascending=False)
 percent = (df.isnull().sum()/df.isnull().count()*100).sort_values(ascending=False)
 missing_data = pd.concat([total, percent], axis=1, keys=['Total Missing Values', '%Missing'])
@@ -123,7 +123,8 @@ df = df.interpolate(method='linear', * ,
                     downcast=None, **kwargs)
 ```
 
-#### Correlation between attributes* C orrelation is a statistical measure that describes the strength and direction of a linear relationship between two variables. I
+#### Correlation between attributes 
+*Correlation* is a statistical measure that describes the strength and direction of a linear relationship between two variables. I
 * t ranges from -1 to +1, whhere,
     Crrelation coefficient of -1 indicates a perfect negative correlation, a
     Cefficient of +1 indicates a perfect positive correlation, and a
@@ -219,10 +220,6 @@ How many unique values exists for the attribute?
 ###  Exploring Uniqeness in dataset 
 ```uniqueVals = list(np.unique(col))```
 
-
-
-
-
 ```python
 # finding distinct and unique values within dataset 
 unique = pd.DataFrame(columns=['Feature', 'Unique Count', 'Distinct Values'])
@@ -233,8 +230,6 @@ for i, col in enumerate(df.columns):
 Are there any hidden characters in your attribute you need to deal with? 
 * Special Characters
 * Whitespaces 
-
-
 
 ```python
 #Remove whitespaces using Lambda Function
@@ -260,7 +255,7 @@ quartiles.columns = ["25%", "50%", "75%"]
 ```python
 #quick example can be excluded 
 
-import re # This is Regex : Regual Expression
+import re # This is Regex : Regular Expression
 
 text = "This is some random text with 9999 numbers and an email address example@example.com and some white spaces."
 
@@ -300,7 +295,7 @@ print(d)
 
 > quick example 
 ```python
-import re # This is Regex : Regual Expression
+import re # This is Regex : Regular Expression
 text = "This is some random text with 9999 numbers and an email address example@example.com and some white spaces."
 # Find all white spaces
 white_spaces = re.findall('\s+', text)
@@ -537,45 +532,70 @@ Are the data types standardised in the column?
 
 ```
 
-
-
-
-
-
 What is the distribution of values in the attribute?
 * Use appropriating binning techniques and visualise with histrograms, displots
 
 ```python
 
 sns.displot
-
 ```
 
 What duplicates exist in your attribute, are they valid? 
 
 * Test for multi indices
 
+```python
+
+```
+
 Are any of your attributes nested object structures that need further processing? 
 
 * Check for evidence of long objects / presence of ```{}``` within df cells
 
+```python
+
+```
 
 Does your data contain any text-based information you need to mine? 
 
 * Test for features encoded as objects and/or headers that contain the word 'comments'
 * Earmark for NLP
 
+```python
+
+```
+
 Do any values look strange/unexpected for the attribute? [DUPE]
 
+```python
+
+```
+
 Do the attributes follow consistent naming conventions? 
-* test headers 
+* test headers
+
+```python
+
+```
 
 Are the attributes named in an accurate manner that represents the values? 
+
+```python
+
+```
 
 > Data Linkage
 
 What attributes exists that can exist as keys for data linkage? [DUPE]
 
+```python
+
+```
+
 When joining datasets together are there duplicates? Ie is there a granularity mismatch 
 * On checking the shape the of the resulting dataframe having performed a merge - do the number of rows increase?
+
+```python
+
+```
 
